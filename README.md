@@ -8,7 +8,7 @@ Veja o documento [aqui](orientacao-projeto/trabalho_uni2.pdf)
 ### Membros do grupo:
 
 
-- Adilson Paulo Da Silva Aaquino - [GitHub](https://github.com/AdilsonPaulo)
+- Adilson Paulo Da Silva Aquino - [GitHub](https://github.com/AdilsonPaulo)
 
 
 - Cicero Paulino de Oliveira Filho - [GitHub](https://github.com/ciceropaulino)
