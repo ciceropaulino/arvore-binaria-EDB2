@@ -4,29 +4,27 @@ public class BinarySearchTree {
     Node root;
 
     public void insert(int value) { //front method to insert
-        if (search(value)) {
-            System.out.println("INVALID ACTION: node already exist.\n"
-            + "    " + value + "\n    ^\n");
-        } else {
-            Node node = new Node(value);
-            root = back_insert(root, node);
-        }
+
+        Node node = new Node(value);
+        root = backInsert(root, node);
     }
 
-    private Node back_insert(Node root, Node node) { //back method to insert
+    private Node backInsert(Node root, Node node) {
 
-        int data = node.data;
+        if (root == null) {
+            return node;
+        } 
+        if (node.data < root.data) {
+            root.left = backInsert(root.left, node);
 
-        if(root == null) { 
-            root = node;
-            return root;
-        } else if(data < root.data) {
-            root.left= back_insert(root.left, node);
-        }else {
-            root.right = back_insert(root.right, node);
+        } else if (node.data > root.data){
+            root.right = backInsert(root.right, node);
+
         }
+
         return root;
     }
+
 
     public void display() {
         displayHelper(root);
@@ -35,79 +33,77 @@ public class BinarySearchTree {
 
         if(root != null) {
             displayHelper(root.left);
-            System.out.println(root.data);
+            System.out.println("\nValor: " + root.data);
             displayHelper(root.right);
-        }
 
+        }
     }
 
-    public boolean search(int value) {
+    public boolean search(int value) { //Front method to search
 
         int data = value;
 
-        return (back_search(root, data))?
+        return (backSearch(root, data))?
          true : false;
-    } //front method 
-    //to search
+    }
 
-    public boolean back_search(Node root, int data) {
+    public boolean backSearch(Node root, int data) {
         if(root == null) {
             return false;
         } else if(root.data == data) {
             return true;
         } else if(root.data > data) {
-            return back_search(root.left, data);
+            return backSearch(root.left, data);
         } else {
-            return back_search(root.right, data);
+            return backSearch(root.right, data);
         }
     }
-/* 
-    public void remove(int data) {
 
-        if(search(data)) {
-            removeHelper(root, data);
+    public void remove(int data) {
+        if (search(data)) {
+            root = backRemove(root, data);
         } else {
-            System.out.println(data + " Remove error, root not be found.");;
+            System.out.println(data + " Remove error, root not found.");
         }
     }
-    private Node removeHelper(Node root, int data) {
-        if(root == null) {
-            return root;
-        } else if(data < root.data) {
-            root.left = removeHelper(root.left, data);
-        } else if(data > root.data) {
-            root.right = removeHelper(root.right, data);
-        } else { //node found
-            if(root.left == null && root.right == null) {
+    
+    private Node backRemove(Node root, int data) {
+        if (root == null) {
+            return null;
+        } else if (data < root.data) {
+            root.left = backRemove(root.left, data);
+        } else if (data > root.data) {
+            root.right = backRemove(root.right, data);
+        } else {
+            if (root.left == null && root.right == null) {
                 root = null;
-            } else if (root.right != null) { // encontra o sucessor para substituir este node
-                root.data = sucessor(root);
-                root.right = removeHelper(root.right, data);
-            } else { //encontra o predecessor para subistituir esse nó
-                root.data = predecessor(root);
-                root.left = removeHelper(root.left, data);
+            } else if (root.right != null) {
+                int successorValue = successor(root);
+                root.right = backRemove(root.right, successorValue);
+                root.data = successorValue;
+            } else {
+                int predecessorValue = predecessor(root);
+                root.left = backRemove(root.left, predecessorValue);
+                root.data = predecessorValue;
             }
         }
-
+    
         return root;
     }
-    private int sucessor(Node root) { //encontra algum valor menor que o filho da direita
-
+    
+    private int successor(Node root) {
         root = root.right;
-
-        while(root.left != null) {
+        while (root.left != null) {
             root = root.left;
         }
         return root.data;
     }
+    
     private int predecessor(Node root) {
-
         root = root.left;
-
-        while(root.right != null) {
+        while (root.right != null) {
             root = root.right;
         }
         return root.data;
     }
-    */
 }
