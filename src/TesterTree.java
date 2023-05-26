@@ -3,13 +3,14 @@ public class TesterTree {
 
         BinarySearchTree tree = new BinarySearchTree();
 
-        tree.insert(4);
-        tree.insert(2);
-        tree.insert(6);
-        tree.insert(1);
-        tree.insert(3);
         tree.insert(5);
-        tree.insert(7);
+        tree.insert(3);
+        tree.insert(8);
+        tree.insert(6);
+        tree.insert(9);
+
+
+        tree.display();
 
         System.out.println("Enesimo Elemento: " + tree.nElement(3));
         System.out.println("Posição do Elemento: " + tree.position(6));
@@ -25,6 +26,8 @@ public class TesterTree {
             System.out.println("A árvore binária é completa");
         else
             System.out.println("A árvore binária não é completa");
+
+        tree.print(2);
 
     }
 }
