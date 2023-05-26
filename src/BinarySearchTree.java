@@ -25,10 +25,10 @@ public class BinarySearchTree {
         return root;
     }
 
-
     public void display() {
         displayHelper(root);
     }
+
     private void displayHelper(Node root) {
 
         if(root != null) {
@@ -47,7 +47,7 @@ public class BinarySearchTree {
          true : false;
     }
 
-    public boolean backSearch(Node root, int data) {
+    private boolean backSearch(Node root, int data) {
         if(root == null) {
             return false;
         } else if(root.data == data) {
@@ -66,7 +66,7 @@ public class BinarySearchTree {
             System.out.println(data + " Remove error, root not found.");
         }
     }
-    
+
     private Node backRemove(Node root, int data) {
         if (root == null) {
             return null;
@@ -90,7 +90,7 @@ public class BinarySearchTree {
     
         return root;
     }
-    
+
     private int successor(Node root) {
         root = root.right;
         while (root.left != null) {
@@ -98,12 +98,143 @@ public class BinarySearchTree {
         }
         return root.data;
     }
-    
+
     private int predecessor(Node root) {
         root = root.left;
         while (root.right != null) {
             root = root.right;
         }
         return root.data;
+    }
+
+    //#########################################################
+
+    public int nElement(int value) {
+        Counter count = new Counter();
+        Node element = searchSymmetricOrder(root, value, count);
+
+        if(element != null) {
+            return element.data;
+        } else {
+            System.out.println("ERROR. Element not found.");
+        }
+
+        return -1;
+    }
+
+    public Node searchSymmetricOrder(Node root, int data, Counter count) {
+        if(root == null) {return null;}
+
+        Node result = searchSymmetricOrder(root.left, data, count);
+        if( result != null){
+            return result;
+        }
+        count.count++;
+        if(count.count == data){
+            return root;
+        }
+        return searchSymmetricOrder(root.right, data, count);
+    }
+
+    public int position(int value) {
+        Counter count = new Counter();
+        int s = backPosition(root, value, count);
+        if(s == -1){
+            System.out.println("Elemento não encontrado!");
+        }
+        return s;
+    }
+
+    public int backPosition(Node root, int value, Counter count) {
+        if (root != null) {
+            int posicaoEsquerda = backPosition(root.left, value, count);
+            if (posicaoEsquerda != -1) {
+                return posicaoEsquerda;
+            }
+
+            count.count++;
+            if (root.data == value) {
+                return count.count;
+            }
+
+            return backPosition(root.right, value, count);
+        }
+        return -1; 
+    }
+
+    public Node searchForMedia(Node root, int key) { /// seria melhor que fosse so um boleano para ver se existe e rodar.
+        if (root == null || root.data == key){
+            return root;
+        }
+
+        if (key < root.data){
+            return searchForMedia(root.left, key);
+        }
+
+        return searchForMedia(root.right, key);
+    }
+
+    public double media (int x){
+        Node temp = searchForMedia(root, x);
+        Counter count = new Counter();
+        double soma = countElements(temp, count, 1);
+        count.count *= 0;
+        double numElements = countElements(temp, count, 0);
+        return soma/numElements;
+    }
+    
+    public int mediana(){
+        Counter count = new Counter();
+        double numElements = countElements(root, count, 0);
+        
+        return medianaRec(root, numElements);
+    }
+    
+    public int medianaRec(Node root, double numElements){
+        int p = position(root.data);
+        if(p == Math.ceil(numElements/2)){
+            return root.data;
+        }
+        else{
+            if(p < Math.ceil(numElements/2)){
+                return medianaRec(root.right, numElements);
+            }
+            else{
+                return medianaRec(root.left, numElements);
+            }
+        }
+    }
+    
+    public double countElements(Node root, Counter count, int x){
+        if(root != null){
+            if(x == 1){
+                count.count+= root.data;
+            }
+            else{
+                count.count++;
+            }
+            double left = countElements(root.left, count, x);
+            if(left != count.count){
+                return left;
+            }
+            
+            return countElements(root.right, count, x);
+        }
+        
+        return (double)count.count;
+    }
+    
+    public String pre_ordem(){
+        StringBuilder sb = new StringBuilder();
+        preOrdemRec(root, sb);
+        return sb.toString();
+    }
+    
+    public void preOrdemRec(Node root, StringBuilder sb){
+        if(root != null){
+            sb.append(root.data).append(" ");
+            preOrdemRec(root.left, sb);
+            preOrdemRec(root.right, sb);
+        }
     }
 }
