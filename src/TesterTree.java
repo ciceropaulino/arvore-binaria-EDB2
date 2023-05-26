@@ -1,7 +1,27 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class TesterTree {
     public static void main(String[] args) {
 
+
+        File f = new File("numeros.txt");
         BinarySearchTree tree = new BinarySearchTree();
+        try{
+            Scanner scanner = new Scanner(f);
+            while(scanner.hasNext()){
+                if(scanner.hasNextInt()){
+                    int num = scanner.nextInt();
+                    tree.insert(num);    
+                }else{
+                    scanner.next();
+                }
+            }
+            scanner.close();
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
 
         tree.insert(3);
         tree.insert(5);
