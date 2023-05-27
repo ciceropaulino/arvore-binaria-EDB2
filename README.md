@@ -18,6 +18,8 @@ Veja o documento [aqui](orientacao-projeto/trabalho_uni2.pdf)
 
 ## Execução do programa
 
+Antes de executar o programa, você deve setar as variáveis do tipo string contidas na main, no arquivo FileManager.Java. Estas variáveis deverão receber como valor a localização dos respectivos arquivos no sistema.
+
 Para executar o programa execute os seguintes comandos no terminal linux:
 ```
 cd arvore-binaria-EDB2/src  
@@ -26,5 +28,3 @@ javac BinarySearchTree.java Counter.java FileManager.java Node.java
 
 java FileManager
 ```
-
-
