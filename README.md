@@ -16,3 +16,15 @@ Veja o documento [aqui](orientacao-projeto/trabalho_uni2.pdf)
 
 - Felipe Marley de Oliveira Gomes - [GitHub](https://github.com/felipemarley)
 
+## Execução do programa
+
+Para executar o programa execute os seguintes comandos no terminal linux:
+```
+cd arvore-binaria-EDB2/src  
+
+javac BinarySearchTree.java Counter.java FileManager.java Node.java
+
+java FileManager
+```
+
+
