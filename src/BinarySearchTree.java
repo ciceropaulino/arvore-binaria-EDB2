@@ -65,11 +65,11 @@ public class BinarySearchTree {
         String right = serialize(root.right);
 
         StringBuilder sb = new StringBuilder();
-        sb.append(root.data).append(" (");
+        sb.append(root.data).append("(");
         if (!left.isEmpty()) {
             sb.append(left);
         }
-        sb.append(") (");
+        sb.append(")(");
         if (!right.isEmpty()) {
             sb.append(right);
         }

@@ -50,6 +50,11 @@ public class FileManager {
 
 
     public void processCommands() {
+        BinarySearchTree tree = new BinarySearchTree();
+
+        for (Integer numInsertion : numbers) {
+            tree.insert(numInsertion);
+        }
         //System.out.println("Processing commands:");
         for (String command : requestCommands) {
             //System.out.println("Command: " + command);
@@ -79,22 +84,26 @@ public class FileManager {
                 // Ação para respectivo comando
                 switch (requestCommand) {
                     case "ENESIMO":
-
+                        System.out.println("\nEnesimo elemento " + methodParameter + " :" + tree.nElement(methodParameter));
                         break;
                     
                     case "POSICAO":
-
+                        System.out.println("\nElemento da posicao " + methodParameter + " :" + tree.position(methodParameter));
                         break;
 
                     case "IMPRIMA":
-                        System.out.println("IMPRIMA method :" + " " + methodParameter);
+                        System.out.println("\nEmprimindo tipo " + methodParameter + " :");
+                        tree.print(methodParameter);
+
                         break;
 
                     case "REMOVA":
-
-                        break;
+                        System.out.println("\nRemovendo " + methodParameter + ".");
+                        tree.remove(methodParameter);
+                        break;  
 
                     case "MEDIA":
+                        System.out.println("\nMedia de filhos de" + methodParameter + ":" + tree.media(methodParameter));
 
                         break;
                 }
@@ -105,15 +114,16 @@ public class FileManager {
 
                 switch (requestCommand) {
                     case "MEDIANA":
-                        
+                        System.out.println("\nMediana da arvore e: " + tree.median());
                         break;
                     
                     case "CHEIA":
+                        System.out.println("\nA arvore e cheia? " + tree.isFull());
 
                         break;
                     
                     case "COMPLETA":
-
+                    System.out.println("\nA arvore e completa? " + tree.isComplete());
                         break;
                     default:
                         break;
@@ -136,9 +146,12 @@ public class FileManager {
     }
 
     public static void main(String[] args) {
+
         FileManager fileManager = new FileManager();
-        fileManager.tokenizeFile("input/i.txt");
+        fileManager.tokenizeInsertionFile("/home/cicero/Documents/Faculdade/Semestre 5/EDB2/arvore-binaria-EDB2/input/numeros.txt");
+        fileManager.tokenizeFile("/home/cicero/Documents/Faculdade/Semestre 5/EDB2/arvore-binaria-EDB2/input/i.txt");
 
         fileManager.processCommands();
     }
+
 }
