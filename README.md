@@ -18,9 +18,9 @@ Este repositório é referente a um projeto do componente curricular chamado Est
 
 ## Documentações do projeto:
 
-[Documento de orientação.](orientacao-projeto/trabalho_uni2.pdf)
+[Documento de orientação.](documents/trabalho_uni2.pdf)
 
-[Relatório com análises assíntoticas.](orientacao-projeto/ArvoreBinariaBusca_EDB2_1.pdf)
+[Relatório com análises assíntoticas.](documents/ArvoreBinariaBusca_EDB2_1.pdf)
 
 ### Membros do grupo:
 
