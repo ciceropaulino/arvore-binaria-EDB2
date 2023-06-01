@@ -146,10 +146,13 @@ public class FileManager {
     }
 
     public static void main(String[] args) {
-
+        String pathToInsert = 
+        "/home/cicero/Documents/Faculdade/Semestre 5/EDB2/arvore-binaria-EDB2/input/numeros.txt"; /// <-- INSIRA AQUI O CAMINHO PARA O ARQUIVO DE INSERCAO DESDE A RAIZ
+        String pathToCommands = 
+        "/home/cicero/Documents/Faculdade/Semestre 5/EDB2/arvore-binaria-EDB2/input/i.txt"; /// <-- INSIRA AQUI O CAMINHO PARA O ARQUIVO DE COMANDOS DESDE A RAIZ
         FileManager fileManager = new FileManager();
-        fileManager.tokenizeInsertionFile("/home/cicero/Documents/Faculdade/Semestre 5/EDB2/arvore-binaria-EDB2/input/numeros.txt");
-        fileManager.tokenizeFile("/home/cicero/Documents/Faculdade/Semestre 5/EDB2/arvore-binaria-EDB2/input/i.txt");
+        fileManager.tokenizeInsertionFile(pathToInsert);
+        fileManager.tokenizeFile(pathToCommands);
 
         fileManager.processCommands();
     }
