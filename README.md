@@ -13,6 +13,9 @@
 
 </div>
 
+## Sobre:
+Este repositório é referente a um projeto do componente curricular chamado Estrutura de Dados II, do Bacharel em Técnologia da Informação, no Instituto Metrópole Digital (IMD) da Unviersidade Federal do Rio Grande do Norte (UFRN). Esse projeto consiste na criação e aplicação de algoritmos de árvore binária de busca.
+
 ## Documentações do projeto:
 
 [Documento de orientação.](orientacao-projeto/trabalho_uni2.pdf)
