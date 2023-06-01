@@ -1,4 +1,4 @@
-<div aligh=center style="padding-bottom: 50px;">
+<div aligh=center style="padding-bottom: 80px;">
 <img align="right" alt="gif" height="60" src="documents/IMD_logo_01-01.svg">
 
 <img align="left" alt="gif" height="60" src="documents/ufrn-logo.png">
